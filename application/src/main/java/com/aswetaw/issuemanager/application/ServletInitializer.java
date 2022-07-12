@@ -1,4 +1,4 @@
-package application;
+package com.aswetaw.issuemanager.application;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
