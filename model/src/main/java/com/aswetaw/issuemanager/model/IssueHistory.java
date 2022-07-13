@@ -36,6 +36,9 @@ public class IssueHistory implements IAudit {
     private IssueStatus status;
 
     /** for relationships **/
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "issue_id",nullable = false)
+    private Issue issue;
 
     /** for audit log **/
     @Embedded

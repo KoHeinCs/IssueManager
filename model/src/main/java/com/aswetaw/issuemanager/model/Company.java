@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author Hein Htet Aung
@@ -29,6 +32,16 @@ public class Company implements IAudit {
     private String address;
 
     /** for relationships **/
+    @OneToMany(mappedBy = "company",cascade = {CascadeType.MERGE,CascadeType.PERSIST},orphanRemoval = true)
+    private Set<Department> departments;
+
+
+    public void addDepartment(Department department){
+        if (departments == null)
+            departments = new HashSet<>();
+        departments.add(department);
+        department.setCompany(this);
+    }
 
     /** for audit log **/
     @Embedded

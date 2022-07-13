@@ -26,6 +26,8 @@ public class IssueSeverity implements IAudit {
     private String description;
 
     /** for relationships **/
+    @OneToOne(mappedBy = "issueSeverity")
+    private Issue issue;
 
     /** for audit log **/
     @Embedded

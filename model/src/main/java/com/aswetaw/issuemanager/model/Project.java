@@ -8,6 +8,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author Hein Htet Aung
@@ -31,6 +33,13 @@ public class Project implements IAudit {
     private LocalDateTime actualEndDate;
 
     /** for relationships **/
+    @ManyToMany(cascade = {CascadeType.PERSIST})
+    @JoinTable(
+            name = "project_user",
+            joinColumns ={@JoinColumn(name = "project_id")},
+            inverseJoinColumns = {@JoinColumn(name = "user_id")}
+    )
+    private Set<User> users = new HashSet<>();
 
     /** for audit log **/
     @Embedded

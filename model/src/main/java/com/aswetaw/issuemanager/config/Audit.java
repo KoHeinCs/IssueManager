@@ -28,13 +28,4 @@ public class Audit {
     @Column(name = "updatedDate")
     private Instant updatedDate;
 
-//    @PrePersist
-//    private void onCreate(){
-//        createdDate = Instant.now();
-//    }
-//
-//    @PreUpdate
-//    private void onUpdate(){
-//        updatedDate = Instant.now();
-//    }
 }

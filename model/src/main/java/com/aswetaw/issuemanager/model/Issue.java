@@ -8,6 +8,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Hein Htet Aung
@@ -36,6 +38,39 @@ public class Issue implements IAudit {
     private String resolutionSummary;
 
     /** for relationships **/
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "branch_id",nullable = false)
+    private Branch branch;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "project_id",nullable = false)
+    private Project project;
+
+    @OneToMany(mappedBy = "issue",cascade = {CascadeType.MERGE,CascadeType.PERSIST},orphanRemoval = true)
+    private List<IssueHistory> issueHistoryList;
+
+    @OneToOne(mappedBy = "issue",cascade = {CascadeType.PERSIST},orphanRemoval = true)
+    private IssueRuntime issueRuntime;
+
+    @OneToOne(cascade = {CascadeType.PERSIST})
+    @JoinColumn(name = "issue_priority_id",nullable = false)
+    private IssuePriority issuePriority;
+
+    @OneToOne(cascade = {CascadeType.PERSIST})
+    @JoinColumn(name = "issue_severity_id",nullable = false)
+    private IssueSeverity issueSeverity;
+
+
+    public void addIssueHistory(IssueHistory issueHistory){
+        if (issueHistoryList == null)
+            issueHistoryList = new ArrayList<>();
+        issueHistoryList.add(issueHistory);
+        issueHistory.setIssue(this);
+    }
+
+    public void addIssueRuntime(IssueRuntime issueRuntime){
+        issueRuntime.setIssue(this);
+    }
 
     /** for audit log **/
     @Embedded

@@ -4,13 +4,13 @@ import com.aswetaw.issuemanager.config.Audit;
 import com.aswetaw.issuemanager.config.AuditListener;
 import com.aswetaw.issuemanager.config.IAudit;
 import com.aswetaw.issuemanager.enums.Position;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author Hein Htet Aung
@@ -43,6 +43,16 @@ public class User implements IAudit {
     private String profilePath;
 
     /** for relationships **/
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "department_id",nullable = false)
+    private Department department;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "role_id",nullable = false)
+    private Role role;
+
+    @ManyToMany(mappedBy = "users")
+    private Set<Project> projects = new HashSet<>();
 
     /** for audit log **/
     @Embedded

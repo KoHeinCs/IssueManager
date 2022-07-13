@@ -37,6 +37,9 @@ public class IssueRuntime implements IAudit {
     private IssueStatus status;
 
     /** for relationships **/
+    @OneToOne
+    @JoinColumn(name = "issue_id",nullable = false)
+    private Issue issue;
 
     /** for audit log **/
     @Embedded
