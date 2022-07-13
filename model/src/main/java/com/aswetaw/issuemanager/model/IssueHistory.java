@@ -1,5 +1,8 @@
 package com.aswetaw.issuemanager.model;
 
+import com.aswetaw.issuemanager.config.Audit;
+import com.aswetaw.issuemanager.config.AuditListener;
+import com.aswetaw.issuemanager.config.IAudit;
 import com.aswetaw.issuemanager.enums.IssueStatus;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,7 +16,8 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-public class IssueHistory {
+@EntityListeners(AuditListener.class)
+public class IssueHistory implements IAudit {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
@@ -33,6 +37,11 @@ public class IssueHistory {
 
     /** for relationships **/
 
+    /** for audit log **/
+    @Embedded
+    Audit audit;
+
+    /** for transaction concurrency control **/
     @Version
     private int version;
 }
