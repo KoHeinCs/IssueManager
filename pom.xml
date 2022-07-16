@@ -14,6 +14,17 @@
         <module>application</module>
         <module>model</module>
         <module>company</module>
+        <module>attachment</module>
+        <module>branch</module>
+        <module>department</module>
+        <module>issue</module>
+        <module>issuehistory</module>
+        <module>issuepriority</module>
+        <module>issueruntime</module>
+        <module>issueseverity</module>
+        <module>project</module>
+        <module>role</module>
+        <module>user</module>
     </modules>
 
     <groupId>com.aswetaw.issuemanager</groupId>
