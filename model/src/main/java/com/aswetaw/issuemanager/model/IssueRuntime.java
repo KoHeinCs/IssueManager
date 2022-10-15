@@ -33,8 +33,8 @@ public class IssueRuntime implements IAudit {
     private String summary;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private IssueStatus status;
+    @Column(nullable = false,name = "issue_status")
+    private IssueStatus statusStatus;
 
     /** for relationships **/
     @OneToOne

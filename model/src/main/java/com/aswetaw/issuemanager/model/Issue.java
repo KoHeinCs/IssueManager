@@ -3,6 +3,7 @@ package com.aswetaw.issuemanager.model;
 import com.aswetaw.issuemanager.config.Audit;
 import com.aswetaw.issuemanager.config.AuditListener;
 import com.aswetaw.issuemanager.config.IAudit;
+import com.aswetaw.issuemanager.enums.IssueStatus;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,7 +25,7 @@ public class Issue implements IAudit {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     private Long id;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true,name = "issue_no")
     private Long issueNo;
     private String summary;
     private String description;
@@ -36,6 +37,10 @@ public class Issue implements IAudit {
     private LocalDateTime actualResolvedDate;
     @Column(name = "resolution_summary")
     private String resolutionSummary;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false,name = "issue_status")
+    private IssueStatus issueStatus;
 
     /** for relationships **/
     @ManyToOne(fetch = FetchType.LAZY)
@@ -59,6 +64,14 @@ public class Issue implements IAudit {
     @OneToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "issue_severity_id",nullable = false)
     private IssueSeverity issueSeverity;
+
+    @OneToOne
+    @JoinColumn(name = "assigned_by_user",nullable = false)
+    private User assignedByUser;
+
+    @OneToOne
+    @JoinColumn(name = "assigned_to_user",nullable = false)
+    private User assignedToUser;
 
 
     public void addIssueHistory(IssueHistory issueHistory){
