@@ -16,7 +16,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @EntityListeners(AuditListener.class)
-public class Attachment implements IAudit {
+public class IssueAttachment implements IAudit {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false,updatable = false)
