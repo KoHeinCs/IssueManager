@@ -24,5 +24,8 @@
         <module>project</module>
         <module>role</module>
         <module>user</module>
+        <module>security</module>
+        <module>exception</module>
+        <module>util</module>
     </modules>
 </project>
