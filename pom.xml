@@ -14,7 +14,6 @@
     <modules>
         <module>application</module>
         <module>model</module>
-        <module>issueattachment</module>
         <module>branch</module>
         <module>department</module>
         <module>issue</module>

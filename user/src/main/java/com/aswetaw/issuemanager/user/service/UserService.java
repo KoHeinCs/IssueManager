@@ -5,6 +5,9 @@ import com.aswetaw.issuemanager.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.List;
+
 /**
  * @author Hein Htet Aung
  * @created at 16/07/2022
@@ -27,5 +30,10 @@ public class UserService implements IUserService{
     @Override
     public void delete(User user) {
         userRepo.delete(user);
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return Collections.emptyList();
     }
 }
