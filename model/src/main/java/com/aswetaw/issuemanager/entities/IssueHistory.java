@@ -23,28 +23,27 @@ public class IssueHistory implements IAudit {
     @Column(nullable = false, updatable = false)
     private Long id;
 
-    @Column(name = "issue_no",unique = true,nullable = false)
+    @Column(name = "issue_no", unique = true, nullable = false)
     private Long issueNo;
-    @Column(name = "issue_severity",nullable = false)
+    @Column(name = "issue_severity", nullable = false)
     private String issueSeverity;
     @Column(name = "issue_priority")
     private String issuePriority;
     private String summary;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false,name = "issue_status")
+    @Column(nullable = false, name = "issue_status")
     private IssueStatus issueStatus;
 
-    /** for relationships **/
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "issue_id",nullable = false)
-    private Issue issue;
-
-    /** for audit log **/
+    /**
+     * for audit log
+     **/
     @Embedded
     Audit audit;
 
-    /** for transaction concurrency control **/
+    /**
+     * for transaction concurrency control
+     **/
     @Version
     private int version;
 }
