@@ -1,5 +1,5 @@
 package com.aswetaw.issuemanager.role.service;
-import com.aswetaw.issuemanager.model.Role;
+import com.aswetaw.issuemanager.entities.Role;
 
 /**
  * @author Hein Htet Aung

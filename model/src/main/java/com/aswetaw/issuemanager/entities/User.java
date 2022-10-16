@@ -1,4 +1,4 @@
-package com.aswetaw.issuemanager.model;
+package com.aswetaw.issuemanager.entities;
 
 import com.aswetaw.issuemanager.config.Audit;
 import com.aswetaw.issuemanager.config.AuditListener;

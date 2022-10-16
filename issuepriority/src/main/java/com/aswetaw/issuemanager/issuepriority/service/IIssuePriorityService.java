@@ -1,6 +1,6 @@
 package com.aswetaw.issuemanager.issuepriority.service;
 
-import com.aswetaw.issuemanager.model.IssuePriority;
+import com.aswetaw.issuemanager.entities.IssuePriority;
 
 /**
  * @author Hein Htet Aung

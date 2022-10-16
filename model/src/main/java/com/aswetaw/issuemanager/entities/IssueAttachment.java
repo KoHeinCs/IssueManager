@@ -1,4 +1,4 @@
-package com.aswetaw.issuemanager.model;
+package com.aswetaw.issuemanager.entities;
 
 import com.aswetaw.issuemanager.config.Audit;
 import com.aswetaw.issuemanager.config.AuditListener;
@@ -10,23 +10,23 @@ import javax.persistence.*;
 
 /**
  * @author Hein Htet Aung
- * @created at 02/07/2022
+ * @created at 13/07/2022
  **/
 @Entity
 @Getter
 @Setter
 @EntityListeners(AuditListener.class)
-public class Branch implements IAudit {
+public class IssueAttachment implements IAudit {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(nullable = false, updatable = false)
+    @Column(nullable = false,updatable = false)
     private Long id;
-    @Column(nullable = false, unique = true)
+
+    @Column(nullable = false,name = "name")
     private String name;
-    private String description;
 
-    /** for relationships **/
-
+    @Column(nullable = false,name = "file_path")
+    private String filePath;
 
     /** for audit log **/
     @Embedded

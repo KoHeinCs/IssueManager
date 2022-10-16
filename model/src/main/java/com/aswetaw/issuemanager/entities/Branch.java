@@ -1,4 +1,4 @@
-package com.aswetaw.issuemanager.model;
+package com.aswetaw.issuemanager.entities;
 
 import com.aswetaw.issuemanager.config.Audit;
 import com.aswetaw.issuemanager.config.AuditListener;
@@ -16,18 +16,17 @@ import javax.persistence.*;
 @Getter
 @Setter
 @EntityListeners(AuditListener.class)
-public class IssueSeverity implements IAudit {
+public class Branch implements IAudit {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     private Long id;
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
     private String description;
 
     /** for relationships **/
-    @OneToOne(mappedBy = "issueSeverity")
-    private Issue issue;
+
 
     /** for audit log **/
     @Embedded

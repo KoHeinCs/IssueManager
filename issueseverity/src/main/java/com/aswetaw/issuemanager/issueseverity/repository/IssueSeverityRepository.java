@@ -1,6 +1,6 @@
 package com.aswetaw.issuemanager.issueseverity.repository;
 
-import com.aswetaw.issuemanager.model.IssueSeverity;
+import com.aswetaw.issuemanager.entities.IssueSeverity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

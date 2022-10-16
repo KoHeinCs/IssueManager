@@ -1,5 +1,5 @@
 package com.aswetaw.issuemanager.department.service;
-import com.aswetaw.issuemanager.model.Department;
+import com.aswetaw.issuemanager.entities.Department;
 
 /**
  * @author Hein Htet Aung

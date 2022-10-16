@@ -1,6 +1,6 @@
 package com.aswetaw.issuemanager.role.service;
 
-import com.aswetaw.issuemanager.model.Role;
+import com.aswetaw.issuemanager.entities.Role;
 import com.aswetaw.issuemanager.role.repository.RoleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

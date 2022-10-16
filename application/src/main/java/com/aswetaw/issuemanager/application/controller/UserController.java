@@ -1,6 +1,6 @@
 package com.aswetaw.issuemanager.application.controller;
 
-import com.aswetaw.issuemanager.model.User;
+import com.aswetaw.issuemanager.entities.User;
 import com.aswetaw.issuemanager.user.service.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,7 +1,7 @@
 package com.aswetaw.issuemanager.branch.service;
 
 import com.aswetaw.issuemanager.branch.repository.BranchRepository;
-import com.aswetaw.issuemanager.model.Branch;
+import com.aswetaw.issuemanager.entities.Branch;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

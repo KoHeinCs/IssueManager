@@ -1,6 +1,6 @@
 package com.aswetaw.issuemanager.issuehistory.service;
 
-import com.aswetaw.issuemanager.model.IssueHistory;
+import com.aswetaw.issuemanager.entities.IssueHistory;
 
 /**
  * @author Hein Htet Aung

@@ -1,7 +1,7 @@
 package com.aswetaw.issuemanager.issuehistory.service;
 
 import com.aswetaw.issuemanager.issuehistory.repository.IssueHistoryRepository;
-import com.aswetaw.issuemanager.model.IssueHistory;
+import com.aswetaw.issuemanager.entities.IssueHistory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

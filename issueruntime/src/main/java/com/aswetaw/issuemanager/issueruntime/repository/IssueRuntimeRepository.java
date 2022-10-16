@@ -1,6 +1,6 @@
 package com.aswetaw.issuemanager.issueruntime.repository;
 
-import com.aswetaw.issuemanager.model.IssueRuntime;
+import com.aswetaw.issuemanager.entities.IssueRuntime;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

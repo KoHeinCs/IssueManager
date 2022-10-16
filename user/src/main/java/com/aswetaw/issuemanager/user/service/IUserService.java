@@ -1,6 +1,6 @@
 package com.aswetaw.issuemanager.user.service;
 
-import com.aswetaw.issuemanager.model.User;
+import com.aswetaw.issuemanager.entities.User;
 
 import java.util.List;
 

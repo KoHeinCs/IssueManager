@@ -1,6 +1,6 @@
 package com.aswetaw.issuemanager.issuepriority.repository;
 
-import com.aswetaw.issuemanager.model.IssuePriority;
+import com.aswetaw.issuemanager.entities.IssuePriority;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

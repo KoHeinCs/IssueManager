@@ -1,6 +1,6 @@
 package com.aswetaw.issuemanager.role.repository;
 
-import com.aswetaw.issuemanager.model.Role;
+import com.aswetaw.issuemanager.entities.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
 package com.aswetaw.issuemanager.user.service;
 
-import com.aswetaw.issuemanager.model.User;
+import com.aswetaw.issuemanager.entities.User;
 import com.aswetaw.issuemanager.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

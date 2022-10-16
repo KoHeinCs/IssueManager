@@ -1,6 +1,6 @@
 package com.aswetaw.issuemanager.user.repository;
 
-import com.aswetaw.issuemanager.model.User;
+import com.aswetaw.issuemanager.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,7 +1,7 @@
 package com.aswetaw.issuemanager.issuepriority.service;
 
 import com.aswetaw.issuemanager.issuepriority.repository.IssuePriorityRepository;
-import com.aswetaw.issuemanager.model.IssuePriority;
+import com.aswetaw.issuemanager.entities.IssuePriority;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

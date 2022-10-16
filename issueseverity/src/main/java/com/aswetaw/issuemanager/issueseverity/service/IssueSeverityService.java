@@ -1,7 +1,7 @@
 package com.aswetaw.issuemanager.issueseverity.service;
 
 import com.aswetaw.issuemanager.issueseverity.repository.IssueSeverityRepository;
-import com.aswetaw.issuemanager.model.IssueSeverity;
+import com.aswetaw.issuemanager.entities.IssueSeverity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
 package com.aswetaw.issuemanager.issueseverity.service;
 
-import com.aswetaw.issuemanager.model.IssueSeverity;
+import com.aswetaw.issuemanager.entities.IssueSeverity;
 
 /**
  * @author Hein Htet Aung

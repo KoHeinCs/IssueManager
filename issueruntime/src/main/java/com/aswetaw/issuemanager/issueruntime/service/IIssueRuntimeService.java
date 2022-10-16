@@ -1,6 +1,6 @@
 package com.aswetaw.issuemanager.issueruntime.service;
 
-import com.aswetaw.issuemanager.model.IssueRuntime;
+import com.aswetaw.issuemanager.entities.IssueRuntime;
 
 /**
  * @author Hein Htet Aung

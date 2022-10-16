@@ -1,6 +1,6 @@
 package com.aswetaw.issuemanager.branch.repository;
 
-import com.aswetaw.issuemanager.model.Branch;
+import com.aswetaw.issuemanager.entities.Branch;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

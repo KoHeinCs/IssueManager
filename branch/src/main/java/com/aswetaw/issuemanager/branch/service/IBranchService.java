@@ -1,7 +1,7 @@
 package com.aswetaw.issuemanager.branch.service;
 
 
-import com.aswetaw.issuemanager.model.Branch;
+import com.aswetaw.issuemanager.entities.Branch;
 
 /**
  * @author Hein Htet Aung

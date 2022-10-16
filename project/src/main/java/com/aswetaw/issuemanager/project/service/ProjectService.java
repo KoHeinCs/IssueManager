@@ -1,6 +1,6 @@
 package com.aswetaw.issuemanager.project.service;
 
-import com.aswetaw.issuemanager.model.Project;
+import com.aswetaw.issuemanager.entities.Project;
 import com.aswetaw.issuemanager.project.repository.ProjectRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
