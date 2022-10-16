@@ -25,7 +25,6 @@ public class User implements IAudit {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false,updatable = false)
     private Long id;
-
     @Column(nullable = false,name = "user_name")
     private String userName;
     @Column(nullable = false)
@@ -39,8 +38,6 @@ public class User implements IAudit {
     private String email;
     @Column(name = "join_date")
     private LocalDateTime joinDate;
-    @Column(name = "profile_path")
-    private String profilePath;
 
     /** for relationships **/
     @ManyToOne(fetch = FetchType.LAZY)

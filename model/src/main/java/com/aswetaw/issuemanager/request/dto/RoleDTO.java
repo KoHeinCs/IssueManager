@@ -1,20 +1,19 @@
 package com.aswetaw.issuemanager.request.dto;
 
+import com.aswetaw.issuemanager.enums.RoleType;
 import lombok.Data;
 
 import javax.persistence.Column;
-import java.time.LocalDateTime;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 /**
  * @author Hein Htet Aung
  * @created at 16/10/2022
  **/
 @Data
-public class ProjectDTO {
+public class RoleDTO {
     private Long id;
-    private String name;
     private String description;
-    private LocalDateTime targetEndDate;
-    private LocalDateTime actualEndDate;
-
+    private RoleType roleType;
 }

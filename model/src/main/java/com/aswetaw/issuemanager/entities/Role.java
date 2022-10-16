@@ -22,9 +22,12 @@ public class Role implements IAudit {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false,updatable = false)
     private Long id;
+    private String description;
+
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false,unique = true)
-    private RoleType role;
+    @Column(nullable = false,unique = true,name = "role_type")
+    private RoleType roleType;
+
 
     /** for relationships **/
 
