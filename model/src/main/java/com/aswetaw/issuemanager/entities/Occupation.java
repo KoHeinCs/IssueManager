@@ -10,23 +10,22 @@ import javax.persistence.*;
 
 /**
  * @author Hein Htet Aung
- * @created at 02/07/2022
+ * @created at 17/10/2022
  **/
 @Entity
 @Getter
 @Setter
 @EntityListeners(AuditListener.class)
-public class Department implements IAudit{
+public class Occupation implements IAudit {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     private Long id;
-    @Column(nullable = false)
     private String name;
     private String description;
-    private String email;
-    private String phone;
-    private String address;
+
+    /** for relationships **/
+
 
     /** for audit log **/
     @Embedded

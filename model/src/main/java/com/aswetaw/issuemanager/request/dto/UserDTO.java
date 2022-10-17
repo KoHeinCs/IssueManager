@@ -1,6 +1,5 @@
 package com.aswetaw.issuemanager.request.dto;
 
-import com.aswetaw.issuemanager.enums.Position;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -15,11 +14,11 @@ public class UserDTO {
     private String userName;
     private String password;
     private String employeeNo;
-    private Position position;
     private String phone;
     private String email;
     private LocalDateTime joinDate;
 
     private DepartmentDTO departmentDTO;
     private RoleDTO roleDTO;
+    private OccupationDTO occupationDTO;
 }

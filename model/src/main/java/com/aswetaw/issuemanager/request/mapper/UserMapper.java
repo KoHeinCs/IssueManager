@@ -13,9 +13,11 @@ import org.mapstruct.Mapping;
 public interface UserMapper extends BaseMapper<UserDTO, User> {
     @Mapping(source = "departmentDTO",target = "department")
     @Mapping(source = "roleDTO",target = "role")
+    @Mapping(source = "occupationDTO",target = "occupation")
     User toEntity(UserDTO dto);
 
     @Mapping(source = "department",target = "departmentDTO")
     @Mapping(source = "role",target = "roleDTO")
+    @Mapping(source = "occupation",target = "occupationDTO")
     UserDTO toDTO(User entity);
 }
