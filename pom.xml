@@ -27,5 +27,6 @@
         <module>security</module>
         <module>exception</module>
         <module>util</module>
+        <module>common</module>
     </modules>
 </project>

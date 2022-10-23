@@ -1,9 +1,12 @@
 package com.aswetaw.issuemanager.issueruntime.service;
 
-import com.aswetaw.issuemanager.issueruntime.repository.IssueRuntimeRepository;
+import com.aswetaw.issuemanager.common.BaseService;
 import com.aswetaw.issuemanager.entities.IssueRuntime;
+import com.aswetaw.issuemanager.issueruntime.repository.IssueRuntimeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author Hein Htet Aung
@@ -11,21 +14,31 @@ import org.springframework.stereotype.Service;
  **/
 @Service
 @RequiredArgsConstructor
-public class IssueRuntimeService implements IIssueRuntimeService{
+public class IssueRuntimeService implements BaseService<IssueRuntime, Long> {
     private final IssueRuntimeRepository issueRuntimeRepo;
 
     @Override
-    public void create(IssueRuntime issueRuntime) {
-        issueRuntimeRepo.save(issueRuntime);
+    public IssueRuntime findById(Long id) {
+        return issueRuntimeRepo.findById(id).get();
     }
 
     @Override
-    public void update(IssueRuntime issueRuntime) {
-        issueRuntimeRepo.save(issueRuntime);
+    public List<IssueRuntime> findAll() {
+        return issueRuntimeRepo.findAll();
     }
 
     @Override
-    public void delete(IssueRuntime issueRuntime) {
-        issueRuntimeRepo.delete(issueRuntime);
+    public void deleteById(Long id) {
+        issueRuntimeRepo.deleteById(id);
+    }
+
+    @Override
+    public void delete(IssueRuntime branch) {
+        issueRuntimeRepo.delete(branch);
+    }
+
+    @Override
+    public IssueRuntime save(IssueRuntime branch) {
+        return issueRuntimeRepo.saveAndFlush(branch);
     }
 }

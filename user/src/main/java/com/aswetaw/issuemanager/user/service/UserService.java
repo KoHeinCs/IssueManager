@@ -1,11 +1,11 @@
 package com.aswetaw.issuemanager.user.service;
 
+import com.aswetaw.issuemanager.common.BaseService;
 import com.aswetaw.issuemanager.entities.User;
 import com.aswetaw.issuemanager.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -14,26 +14,31 @@ import java.util.List;
  **/
 @Service
 @RequiredArgsConstructor
-public class UserService implements IUserService{
+public class UserService implements BaseService<User, Long> {
     private final UserRepository userRepo;
 
     @Override
-    public void create(User user) {
-        userRepo.save(user);
+    public User findById(Long id) {
+        return userRepo.findById(id).get();
     }
 
     @Override
-    public void update(User user) {
-        userRepo.save(user);
+    public List<User> findAll() {
+        return userRepo.findAll();
     }
 
     @Override
-    public void delete(User user) {
-        userRepo.delete(user);
+    public void deleteById(Long id) {
+        userRepo.deleteById(id);
     }
 
     @Override
-    public List<User> getAllUsers() {
-        return Collections.emptyList();
+    public void delete(User branch) {
+        userRepo.delete(branch);
+    }
+
+    @Override
+    public User save(User branch) {
+        return userRepo.saveAndFlush(branch);
     }
 }

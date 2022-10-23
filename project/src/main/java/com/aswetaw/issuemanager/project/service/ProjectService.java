@@ -1,9 +1,12 @@
 package com.aswetaw.issuemanager.project.service;
 
+import com.aswetaw.issuemanager.common.BaseService;
 import com.aswetaw.issuemanager.entities.Project;
 import com.aswetaw.issuemanager.project.repository.ProjectRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author Hein Htet Aung
@@ -11,21 +14,31 @@ import org.springframework.stereotype.Service;
  **/
 @Service
 @RequiredArgsConstructor
-public class ProjectService implements IProjectService{
+public class ProjectService implements BaseService<Project, Long> {
     private final ProjectRepository projectRepo;
 
     @Override
-    public void create(Project project) {
-        projectRepo.save(project);
+    public Project findById(Long id) {
+        return projectRepo.findById(id).get();
     }
 
     @Override
-    public void update(Project project) {
-        projectRepo.save(project);
+    public List<Project> findAll() {
+        return projectRepo.findAll();
     }
 
     @Override
-    public void delete(Project project) {
-        projectRepo.delete(project);
+    public void deleteById(Long id) {
+        projectRepo.deleteById(id);
+    }
+
+    @Override
+    public void delete(Project branch) {
+        projectRepo.delete(branch);
+    }
+
+    @Override
+    public Project save(Project branch) {
+        return projectRepo.saveAndFlush(branch);
     }
 }

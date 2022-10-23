@@ -1,9 +1,12 @@
 package com.aswetaw.issuemanager.issuepriority.service;
 
-import com.aswetaw.issuemanager.issuepriority.repository.IssuePriorityRepository;
+import com.aswetaw.issuemanager.common.BaseService;
 import com.aswetaw.issuemanager.entities.IssuePriority;
+import com.aswetaw.issuemanager.issuepriority.repository.IssuePriorityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author Hein Htet Aung
@@ -11,20 +14,31 @@ import org.springframework.stereotype.Service;
  **/
 @Service
 @RequiredArgsConstructor
-public class IssuePriorityService implements IIssuePriorityService{
+public class IssuePriorityService implements BaseService<IssuePriority, Long> {
     private final IssuePriorityRepository issuePriorityRepo;
+
     @Override
-    public void create(IssuePriority issuePriority) {
-        issuePriorityRepo.save(issuePriority);
+    public IssuePriority findById(Long id) {
+        return issuePriorityRepo.findById(id).get();
     }
 
     @Override
-    public void update(IssuePriority issuePriority) {
-        issuePriorityRepo.save(issuePriority);
+    public List<IssuePriority> findAll() {
+        return issuePriorityRepo.findAll();
     }
 
     @Override
-    public void delete(IssuePriority issuePriority) {
-        issuePriorityRepo.delete(issuePriority);
+    public void deleteById(Long id) {
+        issuePriorityRepo.deleteById(id);
+    }
+
+    @Override
+    public void delete(IssuePriority branch) {
+        issuePriorityRepo.delete(branch);
+    }
+
+    @Override
+    public IssuePriority save(IssuePriority branch) {
+        return issuePriorityRepo.saveAndFlush(branch);
     }
 }

@@ -1,9 +1,12 @@
 package com.aswetaw.issuemanager.role.service;
 
+import com.aswetaw.issuemanager.common.BaseService;
 import com.aswetaw.issuemanager.entities.Role;
 import com.aswetaw.issuemanager.role.repository.RoleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author Hein Htet Aung
@@ -11,21 +14,31 @@ import org.springframework.stereotype.Service;
  **/
 @Service
 @RequiredArgsConstructor
-public class RoleService implements IRoleService{
+public class RoleService implements BaseService<Role, Long> {
     private final RoleRepository roleRepo;
 
     @Override
-    public void create(Role role) {
-        roleRepo.save(role);
+    public Role findById(Long id) {
+        return roleRepo.findById(id).get();
     }
 
     @Override
-    public void update(Role role) {
-        roleRepo.save(role);
+    public List<Role> findAll() {
+        return roleRepo.findAll();
     }
 
     @Override
-    public void delete(Role role) {
-        roleRepo.delete(role);
+    public void deleteById(Long id) {
+        roleRepo.deleteById(id);
+    }
+
+    @Override
+    public void delete(Role branch) {
+        roleRepo.delete(branch);
+    }
+
+    @Override
+    public Role save(Role branch) {
+        return roleRepo.saveAndFlush(branch);
     }
 }

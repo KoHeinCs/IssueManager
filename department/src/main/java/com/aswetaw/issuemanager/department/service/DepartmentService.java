@@ -1,9 +1,12 @@
 package com.aswetaw.issuemanager.department.service;
 
+import com.aswetaw.issuemanager.common.BaseService;
 import com.aswetaw.issuemanager.department.repository.DepartmentRepository;
 import com.aswetaw.issuemanager.entities.Department;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author Hein Htet Aung
@@ -11,21 +14,31 @@ import org.springframework.stereotype.Service;
  **/
 @Service
 @RequiredArgsConstructor
-public class DepartmentService implements IDepartmentService{
+public class DepartmentService implements BaseService<Department, Long> {
     private final DepartmentRepository departmentRepo;
 
     @Override
-    public void create(Department department) {
-        departmentRepo.save(department);
+    public Department findById(Long id) {
+        return departmentRepo.findById(id).get();
     }
 
     @Override
-    public void update(Department department) {
-        departmentRepo.save(department);
+    public List<Department> findAll() {
+        return departmentRepo.findAll();
     }
 
     @Override
-    public void delete(Department department) {
-        departmentRepo.save(department);
+    public void deleteById(Long id) {
+        departmentRepo.deleteById(id);
+    }
+
+    @Override
+    public void delete(Department branch) {
+        departmentRepo.delete(branch);
+    }
+
+    @Override
+    public Department save(Department branch) {
+        return departmentRepo.saveAndFlush(branch);
     }
 }

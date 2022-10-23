@@ -1,9 +1,12 @@
 package com.aswetaw.issuemanager.issueseverity.service;
 
-import com.aswetaw.issuemanager.issueseverity.repository.IssueSeverityRepository;
+import com.aswetaw.issuemanager.common.BaseService;
 import com.aswetaw.issuemanager.entities.IssueSeverity;
+import com.aswetaw.issuemanager.issueseverity.repository.IssueSeverityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author Hein Htet Aung
@@ -11,21 +14,31 @@ import org.springframework.stereotype.Service;
  **/
 @Service
 @RequiredArgsConstructor
-public class IssueSeverityService implements IIssueSeverityService{
+public class IssueSeverityService implements BaseService<IssueSeverity, Long> {
     private final IssueSeverityRepository issueSeverityRepo;
 
     @Override
-    public void create(IssueSeverity issueSeverity) {
-        issueSeverityRepo.save(issueSeverity);
+    public IssueSeverity findById(Long id) {
+        return issueSeverityRepo.findById(id).get();
     }
 
     @Override
-    public void update(IssueSeverity issueSeverity) {
-        issueSeverityRepo.save(issueSeverity);
+    public List<IssueSeverity> findAll() {
+        return issueSeverityRepo.findAll();
     }
 
     @Override
-    public void delete(IssueSeverity issueSeverity) {
-        issueSeverityRepo.delete(issueSeverity);
+    public void deleteById(Long id) {
+        issueSeverityRepo.deleteById(id);
+    }
+
+    @Override
+    public void delete(IssueSeverity branch) {
+        issueSeverityRepo.delete(branch);
+    }
+
+    @Override
+    public IssueSeverity save(IssueSeverity branch) {
+        return issueSeverityRepo.saveAndFlush(branch);
     }
 }
