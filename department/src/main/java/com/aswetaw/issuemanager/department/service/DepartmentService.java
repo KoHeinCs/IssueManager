@@ -3,10 +3,14 @@ package com.aswetaw.issuemanager.department.service;
 import com.aswetaw.issuemanager.common.BaseService;
 import com.aswetaw.issuemanager.department.repository.DepartmentRepository;
 import com.aswetaw.issuemanager.entities.Department;
+import com.aswetaw.issuemanager.request.dto.DepartmentDTO;
+import com.aswetaw.issuemanager.request.mapper.DepartmentMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Hein Htet Aung
@@ -14,31 +18,49 @@ import java.util.List;
  **/
 @Service
 @RequiredArgsConstructor
-public class DepartmentService implements BaseService<Department, Long> {
+public class DepartmentService extends BaseService<DepartmentDTO, Long> {
     private final DepartmentRepository departmentRepo;
+    private final DepartmentMapper departmentMapper;
 
-    @Override
-    public Department findById(Long id) {
-        return departmentRepo.findById(id).get();
+    public DepartmentDTO findById(Long id) {
+        Optional<Department> departmentOptional = departmentRepo.findById(id);
+        if (departmentOptional.isPresent())
+            return departmentMapper.toDTO(departmentOptional.get());
+            // TODO throw not found exception
+        else
+            return null;
     }
 
-    @Override
-    public List<Department> findAll() {
-        return departmentRepo.findAll();
+    public List<DepartmentDTO> findAll() {
+        List<Department> departmentList = departmentRepo.findAll();
+        if (departmentList.isEmpty())
+            return Collections.emptyList();
+        else
+            return departmentMapper.toDTOList(departmentList);
     }
 
-    @Override
     public void deleteById(Long id) {
         departmentRepo.deleteById(id);
     }
 
-    @Override
-    public void delete(Department branch) {
-        departmentRepo.delete(branch);
+    public void delete(DepartmentDTO departmentDTO) {
+        departmentRepo.delete(departmentMapper.toEntity(departmentDTO));
     }
 
-    @Override
-    public Department save(Department branch) {
-        return departmentRepo.saveAndFlush(branch);
+    public DepartmentDTO save(DepartmentDTO departmentDTO) {
+        Department department = departmentRepo.saveAndFlush(departmentMapper.toEntity(departmentDTO));
+        return departmentMapper.toDTO(department);
     }
+
+    public DepartmentDTO update(Long id, DepartmentDTO departmentDTO) {
+        Optional<Department> departmentOptional = departmentRepo.findById(id);
+        if (departmentOptional.isPresent()) {
+            Department department = departmentMapper.toEntity(departmentDTO);
+            departmentRepo.save(department);
+        }
+        // TODO throw id not found exception for modification
+        return null;
+    }
+
+
 }

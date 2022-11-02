@@ -6,12 +6,16 @@ import java.util.List;
  * @author Hein Htet Aung
  * @created at 23/10/2022
  **/
-public interface BaseService <T,ID>{
-    T findById(ID id);
-    List<T> findAll();
+public abstract class BaseService<T, ID> {
+    protected abstract T findById(ID id);
 
-    void deleteById(ID id);
-    void delete(T entity);
+    protected abstract List<T> findAll();
 
-    T save(T entity);
+    protected abstract void deleteById(ID id);
+
+    protected abstract void delete(T entity);
+
+    protected abstract T save(T entity);
+
+    protected abstract T update(ID id, T entity);
 }

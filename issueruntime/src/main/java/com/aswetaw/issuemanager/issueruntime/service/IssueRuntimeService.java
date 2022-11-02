@@ -3,10 +3,14 @@ package com.aswetaw.issuemanager.issueruntime.service;
 import com.aswetaw.issuemanager.common.BaseService;
 import com.aswetaw.issuemanager.entities.IssueRuntime;
 import com.aswetaw.issuemanager.issueruntime.repository.IssueRuntimeRepository;
+import com.aswetaw.issuemanager.request.dto.IssueRuntimeDTO;
+import com.aswetaw.issuemanager.request.mapper.IssueRuntimeMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Hein Htet Aung
@@ -14,31 +18,48 @@ import java.util.List;
  **/
 @Service
 @RequiredArgsConstructor
-public class IssueRuntimeService implements BaseService<IssueRuntime, Long> {
+public class IssueRuntimeService extends BaseService<IssueRuntimeDTO, Long> {
     private final IssueRuntimeRepository issueRuntimeRepo;
+    private final IssueRuntimeMapper issueRuntimeMapper;
 
-    @Override
-    public IssueRuntime findById(Long id) {
-        return issueRuntimeRepo.findById(id).get();
+    public IssueRuntimeDTO findById(Long id) {
+        Optional<IssueRuntime> IssueRuntimeOptional = issueRuntimeRepo.findById(id);
+        if (IssueRuntimeOptional.isPresent())
+            return issueRuntimeMapper.toDTO(IssueRuntimeOptional.get());
+            // TODO throw not found exception
+        else
+            return null;
     }
 
-    @Override
-    public List<IssueRuntime> findAll() {
-        return issueRuntimeRepo.findAll();
+    public List<IssueRuntimeDTO> findAll() {
+        List<IssueRuntime> issueRuntimeList = issueRuntimeRepo.findAll();
+        if (issueRuntimeList.isEmpty())
+            return Collections.emptyList();
+        else
+            return issueRuntimeMapper.toDTOList(issueRuntimeList);
     }
 
-    @Override
     public void deleteById(Long id) {
         issueRuntimeRepo.deleteById(id);
     }
 
-    @Override
-    public void delete(IssueRuntime branch) {
-        issueRuntimeRepo.delete(branch);
+    public void delete(IssueRuntimeDTO issueRuntimeDTO) {
+        issueRuntimeRepo.delete(issueRuntimeMapper.toEntity(issueRuntimeDTO));
     }
 
-    @Override
-    public IssueRuntime save(IssueRuntime branch) {
-        return issueRuntimeRepo.saveAndFlush(branch);
+    public IssueRuntimeDTO save(IssueRuntimeDTO issueRuntimeDTO) {
+        IssueRuntime issueRuntime = issueRuntimeRepo.saveAndFlush(issueRuntimeMapper.toEntity(issueRuntimeDTO));
+        return issueRuntimeMapper.toDTO(issueRuntime);
     }
+
+    public IssueRuntimeDTO update(Long id, IssueRuntimeDTO issueRuntimeDTO) {
+        Optional<IssueRuntime> IssueRuntimeOptional = issueRuntimeRepo.findById(id);
+        if (IssueRuntimeOptional.isPresent()) {
+            IssueRuntime issueRuntime = issueRuntimeMapper.toEntity(issueRuntimeDTO);
+            issueRuntimeRepo.save(issueRuntime);
+        }
+        // TODO throw id not found exception for modification
+        return null;
+    }
+
 }

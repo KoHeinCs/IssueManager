@@ -3,10 +3,14 @@ package com.aswetaw.issuemanager.issuepriority.service;
 import com.aswetaw.issuemanager.common.BaseService;
 import com.aswetaw.issuemanager.entities.IssuePriority;
 import com.aswetaw.issuemanager.issuepriority.repository.IssuePriorityRepository;
+import com.aswetaw.issuemanager.request.dto.IssuePriorityDTO;
+import com.aswetaw.issuemanager.request.mapper.IssuePriorityMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Hein Htet Aung
@@ -14,31 +18,49 @@ import java.util.List;
  **/
 @Service
 @RequiredArgsConstructor
-public class IssuePriorityService implements BaseService<IssuePriority, Long> {
+public class IssuePriorityService extends BaseService<IssuePriorityDTO, Long> {
     private final IssuePriorityRepository issuePriorityRepo;
+    private final IssuePriorityMapper issuePriorityMapper;
 
-    @Override
-    public IssuePriority findById(Long id) {
-        return issuePriorityRepo.findById(id).get();
+    public IssuePriorityDTO findById(Long id) {
+        Optional<IssuePriority> issuePriorityOptional = issuePriorityRepo.findById(id);
+        if (issuePriorityOptional.isPresent())
+            return issuePriorityMapper.toDTO(issuePriorityOptional.get());
+            // TODO throw not found exception
+        else
+            return null;
     }
 
-    @Override
-    public List<IssuePriority> findAll() {
-        return issuePriorityRepo.findAll();
+    public List<IssuePriorityDTO> findAll() {
+        List<IssuePriority> issuePriorityList = issuePriorityRepo.findAll();
+        if (issuePriorityList.isEmpty())
+            return Collections.emptyList();
+        else
+            return issuePriorityMapper.toDTOList(issuePriorityList);
     }
 
-    @Override
     public void deleteById(Long id) {
         issuePriorityRepo.deleteById(id);
     }
 
-    @Override
-    public void delete(IssuePriority branch) {
-        issuePriorityRepo.delete(branch);
+    public void delete(IssuePriorityDTO issuePriorityDTO) {
+        issuePriorityRepo.delete(issuePriorityMapper.toEntity(issuePriorityDTO));
     }
 
-    @Override
-    public IssuePriority save(IssuePriority branch) {
-        return issuePriorityRepo.saveAndFlush(branch);
+    public IssuePriorityDTO save(IssuePriorityDTO issuePriorityDTO) {
+        IssuePriority issuePriority = issuePriorityRepo.saveAndFlush(issuePriorityMapper.toEntity(issuePriorityDTO));
+        return issuePriorityMapper.toDTO(issuePriority);
     }
+
+    public IssuePriorityDTO update(Long id, IssuePriorityDTO issuePriorityDTO) {
+        Optional<IssuePriority> issuePriorityOptional = issuePriorityRepo.findById(id);
+        if (issuePriorityOptional.isPresent()) {
+            IssuePriority issuePriority = issuePriorityMapper.toEntity(issuePriorityDTO);
+            issuePriorityRepo.save(issuePriority);
+        }
+        // TODO throw id not found exception for modification
+        return null;
+    }
+
+
 }

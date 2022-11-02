@@ -5,6 +5,7 @@ import com.aswetaw.issuemanager.config.AuditListener;
 import com.aswetaw.issuemanager.config.IAudit;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -15,6 +16,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
+@ToString
 @EntityListeners(AuditListener.class)
 public class Branch implements IAudit {
     @Id
@@ -35,4 +37,6 @@ public class Branch implements IAudit {
     /** for transaction concurrency control **/
     @Version
     private int version;
+
+
 }

@@ -1,4 +1,4 @@
-package com.aswetaw.issuemanager.response;
+package com.aswetaw.issuemanager.common.response;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

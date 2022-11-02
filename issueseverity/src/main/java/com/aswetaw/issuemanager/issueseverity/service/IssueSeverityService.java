@@ -3,10 +3,14 @@ package com.aswetaw.issuemanager.issueseverity.service;
 import com.aswetaw.issuemanager.common.BaseService;
 import com.aswetaw.issuemanager.entities.IssueSeverity;
 import com.aswetaw.issuemanager.issueseverity.repository.IssueSeverityRepository;
+import com.aswetaw.issuemanager.request.dto.IssueSeverityDTO;
+import com.aswetaw.issuemanager.request.mapper.IssueSeverityMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Hein Htet Aung
@@ -14,31 +18,50 @@ import java.util.List;
  **/
 @Service
 @RequiredArgsConstructor
-public class IssueSeverityService implements BaseService<IssueSeverity, Long> {
+public class IssueSeverityService extends BaseService<IssueSeverityDTO, Long> {
+
     private final IssueSeverityRepository issueSeverityRepo;
+    private final IssueSeverityMapper issueSeverityMapper;
 
-    @Override
-    public IssueSeverity findById(Long id) {
-        return issueSeverityRepo.findById(id).get();
+    public IssueSeverityDTO findById(Long id) {
+        Optional<IssueSeverity> issueSeverityOptional = issueSeverityRepo.findById(id);
+        if (issueSeverityOptional.isPresent())
+            return issueSeverityMapper.toDTO(issueSeverityOptional.get());
+            // TODO throw not found exception
+        else
+            return null;
     }
 
-    @Override
-    public List<IssueSeverity> findAll() {
-        return issueSeverityRepo.findAll();
+    public List<IssueSeverityDTO> findAll() {
+        List<IssueSeverity> issueSeverityList = issueSeverityRepo.findAll();
+        if (issueSeverityList.isEmpty())
+            return Collections.emptyList();
+        else
+            return issueSeverityMapper.toDTOList(issueSeverityList);
     }
 
-    @Override
     public void deleteById(Long id) {
         issueSeverityRepo.deleteById(id);
     }
 
-    @Override
-    public void delete(IssueSeverity branch) {
-        issueSeverityRepo.delete(branch);
+    public void delete(IssueSeverityDTO issueSeverityDTO) {
+        issueSeverityRepo.delete(issueSeverityMapper.toEntity(issueSeverityDTO));
     }
 
-    @Override
-    public IssueSeverity save(IssueSeverity branch) {
-        return issueSeverityRepo.saveAndFlush(branch);
+    public IssueSeverityDTO save(IssueSeverityDTO issueSeverityDTO) {
+        IssueSeverity issueSeverity = issueSeverityRepo.saveAndFlush(issueSeverityMapper.toEntity(issueSeverityDTO));
+        return issueSeverityMapper.toDTO(issueSeverity);
     }
+
+    public IssueSeverityDTO update(Long id, IssueSeverityDTO issueSeverityDTO) {
+        Optional<IssueSeverity> issueSeverityOptional = issueSeverityRepo.findById(id);
+        if (issueSeverityOptional.isPresent()) {
+            IssueSeverity issueSeverity = issueSeverityMapper.toEntity(issueSeverityDTO);
+            issueSeverityRepo.save(issueSeverity);
+        }
+        // TODO throw id not found exception for modification
+        return null;
+    }
+
+
 }
