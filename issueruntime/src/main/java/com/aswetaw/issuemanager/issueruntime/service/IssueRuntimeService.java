@@ -6,6 +6,7 @@ import com.aswetaw.issuemanager.issueruntime.repository.IssueRuntimeRepository;
 import com.aswetaw.issuemanager.request.dto.IssueRuntimeDTO;
 import com.aswetaw.issuemanager.request.mapper.IssueRuntimeMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -53,9 +54,10 @@ public class IssueRuntimeService extends BaseService<IssueRuntimeDTO, Long> {
     }
 
     public IssueRuntimeDTO update(Long id, IssueRuntimeDTO issueRuntimeDTO) {
-        Optional<IssueRuntime> IssueRuntimeOptional = issueRuntimeRepo.findById(id);
-        if (IssueRuntimeOptional.isPresent()) {
-            IssueRuntime issueRuntime = issueRuntimeMapper.toEntity(issueRuntimeDTO);
+        Optional<IssueRuntime> issueRuntimeOptional = issueRuntimeRepo.findById(id);
+        if (issueRuntimeOptional.isPresent()) {
+            IssueRuntime issueRuntime = issueRuntimeOptional.get();
+            BeanUtils.copyProperties(issueRuntimeDTO, issueRuntime, "id");
             issueRuntimeRepo.save(issueRuntime);
         }
         // TODO throw id not found exception for modification

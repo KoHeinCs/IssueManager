@@ -6,6 +6,7 @@ import com.aswetaw.issuemanager.entities.Department;
 import com.aswetaw.issuemanager.request.dto.DepartmentDTO;
 import com.aswetaw.issuemanager.request.mapper.DepartmentMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -55,7 +56,8 @@ public class DepartmentService extends BaseService<DepartmentDTO, Long> {
     public DepartmentDTO update(Long id, DepartmentDTO departmentDTO) {
         Optional<Department> departmentOptional = departmentRepo.findById(id);
         if (departmentOptional.isPresent()) {
-            Department department = departmentMapper.toEntity(departmentDTO);
+            Department department = departmentOptional.get();
+            BeanUtils.copyProperties(departmentDTO, department, "id");
             departmentRepo.save(department);
         }
         // TODO throw id not found exception for modification

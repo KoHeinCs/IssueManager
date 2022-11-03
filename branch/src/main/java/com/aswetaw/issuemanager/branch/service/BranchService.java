@@ -6,6 +6,7 @@ import com.aswetaw.issuemanager.entities.Branch;
 import com.aswetaw.issuemanager.request.dto.BranchDTO;
 import com.aswetaw.issuemanager.request.mapper.BranchMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -56,11 +57,13 @@ public class BranchService extends BaseService<BranchDTO, Long> {
     public BranchDTO update(Long id, BranchDTO branchDTO) {
         Optional<Branch> branchOptional = branchRepo.findById(id);
         if (branchOptional.isPresent()) {
-            Branch branch = branchMapper.toEntity(branchDTO);
+            Branch branch = branchOptional.get();
+            BeanUtils.copyProperties(branchDTO,branch,"id");
             branchRepo.save(branch);
         }
         // TODO throw id not found exception for modification
         return null;
     }
+
 
 }

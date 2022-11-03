@@ -6,6 +6,7 @@ import com.aswetaw.issuemanager.request.dto.RoleDTO;
 import com.aswetaw.issuemanager.request.mapper.RoleMapper;
 import com.aswetaw.issuemanager.role.repository.RoleRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -55,7 +56,8 @@ public class RoleService extends BaseService<RoleDTO, Long> {
     public RoleDTO update(Long id, RoleDTO roleDTO) {
         Optional<Role> roleOptional = roleRepo.findById(id);
         if (roleOptional.isPresent()) {
-            Role role = roleMapper.toEntity(roleDTO);
+            Role role = roleOptional.get();
+            BeanUtils.copyProperties(roleDTO, role, "id");
             roleRepo.save(role);
         }
         // TODO throw id not found exception for modification

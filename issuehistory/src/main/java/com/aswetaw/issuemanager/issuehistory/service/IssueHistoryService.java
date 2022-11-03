@@ -6,6 +6,7 @@ import com.aswetaw.issuemanager.issuehistory.repository.IssueHistoryRepository;
 import com.aswetaw.issuemanager.request.dto.IssueHistoryDTO;
 import com.aswetaw.issuemanager.request.mapper.IssueHistoryMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -19,46 +20,47 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class IssueHistoryService extends BaseService<IssueHistoryDTO, Long> {
-    
+
     private final IssueHistoryRepository issueHistoryRepo;
     private final IssueHistoryMapper issueHistoryMapper;
 
 
     public IssueHistoryDTO findById(Long id) {
-        Optional<IssueHistory> IssueHistoryOptional = issueHistoryRepo.findById(id);
-        if (IssueHistoryOptional.isPresent())
-            return issueHistoryMapper.toDTO(IssueHistoryOptional.get());
+        Optional<IssueHistory> issueHistoryOptional = issueHistoryRepo.findById(id);
+        if (issueHistoryOptional.isPresent())
+            return issueHistoryMapper.toDTO(issueHistoryOptional.get());
             // TODO throw not found exception
         else
             return null;
     }
 
     public List<IssueHistoryDTO> findAll() {
-        List<IssueHistory> IssueHistoryList = issueHistoryRepo.findAll();
-        if (IssueHistoryList.isEmpty())
+        List<IssueHistory> issueHistoryList = issueHistoryRepo.findAll();
+        if (issueHistoryList.isEmpty())
             return Collections.emptyList();
         else
-            return issueHistoryMapper.toDTOList(IssueHistoryList);
+            return issueHistoryMapper.toDTOList(issueHistoryList);
     }
 
     public void deleteById(Long id) {
         issueHistoryRepo.deleteById(id);
     }
 
-    public void delete(IssueHistoryDTO IssueHistoryDTO) {
-        issueHistoryRepo.delete(issueHistoryMapper.toEntity(IssueHistoryDTO));
+    public void delete(IssueHistoryDTO issueHistoryDTO) {
+        issueHistoryRepo.delete(issueHistoryMapper.toEntity(issueHistoryDTO));
     }
 
-    public IssueHistoryDTO save(IssueHistoryDTO IssueHistoryDTO) {
-        IssueHistory IssueHistory = issueHistoryRepo.saveAndFlush(issueHistoryMapper.toEntity(IssueHistoryDTO));
-        return issueHistoryMapper.toDTO(IssueHistory);
+    public IssueHistoryDTO save(IssueHistoryDTO issueHistoryDTO) {
+        IssueHistory issueHistory = issueHistoryRepo.saveAndFlush(issueHistoryMapper.toEntity(issueHistoryDTO));
+        return issueHistoryMapper.toDTO(issueHistory);
     }
 
-    public IssueHistoryDTO update(Long id, IssueHistoryDTO IssueHistoryDTO) {
-        Optional<IssueHistory> IssueHistoryOptional = issueHistoryRepo.findById(id);
-        if (IssueHistoryOptional.isPresent()) {
-            IssueHistory IssueHistory = issueHistoryMapper.toEntity(IssueHistoryDTO);
-            issueHistoryRepo.save(IssueHistory);
+    public IssueHistoryDTO update(Long id, IssueHistoryDTO issueHistoryDTO) {
+        Optional<IssueHistory> issueHistoryOptional = issueHistoryRepo.findById(id);
+        if (issueHistoryOptional.isPresent()) {
+            IssueHistory issueHistory = issueHistoryOptional.get();
+            BeanUtils.copyProperties(issueHistoryDTO, issueHistory, "id");
+            issueHistoryRepo.save(issueHistory);
         }
         // TODO throw id not found exception for modification
         return null;

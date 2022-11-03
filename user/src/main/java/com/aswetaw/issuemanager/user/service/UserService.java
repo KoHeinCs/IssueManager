@@ -6,6 +6,7 @@ import com.aswetaw.issuemanager.request.dto.UserDTO;
 import com.aswetaw.issuemanager.request.mapper.UserMapper;
 import com.aswetaw.issuemanager.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -56,7 +57,8 @@ public class UserService extends BaseService<UserDTO, Long> {
     public UserDTO update(Long id, UserDTO userDTO) {
         Optional<User> userOptional = userRepo.findById(id);
         if (userOptional.isPresent()) {
-            User user = userMapper.toEntity(userDTO);
+            User user = userOptional.get();
+            BeanUtils.copyProperties(userDTO, user, "id");
             userRepo.save(user);
         }
         // TODO throw id not found exception for modification

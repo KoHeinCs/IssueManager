@@ -59,6 +59,11 @@
             <artifactId>branch</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.aswetaw.issuemanager</groupId>
+            <artifactId>department</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

@@ -6,6 +6,7 @@ import com.aswetaw.issuemanager.issueseverity.repository.IssueSeverityRepository
 import com.aswetaw.issuemanager.request.dto.IssueSeverityDTO;
 import com.aswetaw.issuemanager.request.mapper.IssueSeverityMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -56,7 +57,8 @@ public class IssueSeverityService extends BaseService<IssueSeverityDTO, Long> {
     public IssueSeverityDTO update(Long id, IssueSeverityDTO issueSeverityDTO) {
         Optional<IssueSeverity> issueSeverityOptional = issueSeverityRepo.findById(id);
         if (issueSeverityOptional.isPresent()) {
-            IssueSeverity issueSeverity = issueSeverityMapper.toEntity(issueSeverityDTO);
+            IssueSeverity issueSeverity = issueSeverityOptional.get();
+            BeanUtils.copyProperties(issueSeverityDTO, issueSeverity, "id");
             issueSeverityRepo.save(issueSeverity);
         }
         // TODO throw id not found exception for modification

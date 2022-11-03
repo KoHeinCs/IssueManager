@@ -19,7 +19,7 @@ public class ResponseHandler {
         return new ResponseEntity<>(response,httpStatus);
     }
 
-    public static  <T> ResponseEntity<Object> createHttpResponse(String message,HttpStatus httpStatus){
+    public static ResponseEntity<Object> createHttpResponse(String message,HttpStatus httpStatus){
         HttpResponseDTO responseDTO = new HttpResponseDTO(message,httpStatus);
         response.put("response",responseDTO);
         return new ResponseEntity<>(response,httpStatus);

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static com.aswetaw.issuemanager.common.util.ApiConstant.branch;
+import static com.aswetaw.issuemanager.common.util.ApiConstant.*;
 
 /**
  * @author Hein Htet Aung
@@ -23,35 +23,31 @@ public class BranchController {
 
     private final BranchService branchService;
 
-    @PostMapping("/create")
+    @PostMapping(create)
     private ResponseEntity<Object> create(@RequestBody BranchDTO branchDTO) {
         return ResponseHandler.createHttpResponse(branchService.save(branchDTO), "New branch was created successfully ", HttpStatus.CREATED);
     }
 
-    @PostMapping("/update")
+    @PostMapping(update)
     private ResponseEntity<Object> update(@RequestBody BranchDTO branchDTO) {
-        return ResponseHandler.createHttpResponse(branchService.save(branchDTO), "Branch was updated successfully ", HttpStatus.ACCEPTED);
+        return ResponseHandler.createHttpResponse(branchService.update(branchDTO.getId(), branchDTO), "Branch was updated successfully ", HttpStatus.ACCEPTED);
     }
 
-    @GetMapping("/all")
+    @GetMapping(all)
     private ResponseEntity<Object> getAllBranch() {
         List<BranchDTO> branchDTOList = branchService.findAll();
-        if (branchDTOList.isEmpty())
-            return ResponseHandler.createHttpResponse("There is no branch ", HttpStatus.NO_CONTENT);
-        else
-            return ResponseHandler.createHttpResponse(branchDTOList, "Requested branches were given ", HttpStatus.OK);
+        return ResponseHandler.createHttpResponse(branchDTOList, "Requested branches were given ", HttpStatus.OK);
     }
 
-
-    @GetMapping("/{id}")
+    @GetMapping(findById)
     public ResponseEntity<Object> getBranchById(@PathVariable("id") Long id) {
-        return ResponseHandler.createHttpResponse(branchService.findById(id), "Requested branches were given ", HttpStatus.OK);
+        return ResponseHandler.createHttpResponse(branchService.findById(id), "Requested branch were given ", HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping(deleteById)
     public ResponseEntity<Object> deleteBranch(@PathVariable("id") long id) {
         branchService.deleteById(id);
-        return ResponseHandler.createHttpResponse("Requested branch id =" + id + " was deleted ", HttpStatus.NO_CONTENT);
+        return ResponseHandler.createHttpResponse("Requested branch which has id =" + id + " was deleted ", HttpStatus.OK);
     }
 
 

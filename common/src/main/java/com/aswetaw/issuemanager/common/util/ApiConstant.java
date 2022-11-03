@@ -8,10 +8,16 @@ public class ApiConstant {
 
     public static final String endPoint = "/api";
 
+    public static final String  create = "/create";
+    public static final String  update = "/update";
+    public static final String  all =  "/all";
+    public static final String  findById = "/find/{id}";
+    public static final String  deleteById = "/delete/{id}";
+
     /**  rest api for branch **/
     public static final String  branch = endPoint+"/branch";
-    public static final String  delete_branch = branch+"/delete";
-    public static final String  all_branch = branch+"/all";
-    public static final String  find_by_id = branch+"/find";
+
+    /**  rest api for branch **/
+    public static final String  department = endPoint+"/department";
 
 }

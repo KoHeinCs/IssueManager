@@ -6,6 +6,7 @@ import com.aswetaw.issuemanager.project.repository.ProjectRepository;
 import com.aswetaw.issuemanager.request.dto.ProjectDTO;
 import com.aswetaw.issuemanager.request.mapper.ProjectMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -55,7 +56,8 @@ public class ProjectService extends BaseService<ProjectDTO, Long> {
     public ProjectDTO update(Long id, ProjectDTO projectDTO) {
         Optional<Project> projectOptional = projectRepo.findById(id);
         if (projectOptional.isPresent()) {
-            Project project = projectMapper.toEntity(projectDTO);
+            Project project = projectOptional.get();
+            BeanUtils.copyProperties(projectDTO, project, "id");
             projectRepo.save(project);
         }
         // TODO throw id not found exception for modification

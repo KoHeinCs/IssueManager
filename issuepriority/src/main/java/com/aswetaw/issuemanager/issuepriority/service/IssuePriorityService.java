@@ -6,6 +6,7 @@ import com.aswetaw.issuemanager.issuepriority.repository.IssuePriorityRepository
 import com.aswetaw.issuemanager.request.dto.IssuePriorityDTO;
 import com.aswetaw.issuemanager.request.mapper.IssuePriorityMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -55,7 +56,8 @@ public class IssuePriorityService extends BaseService<IssuePriorityDTO, Long> {
     public IssuePriorityDTO update(Long id, IssuePriorityDTO issuePriorityDTO) {
         Optional<IssuePriority> issuePriorityOptional = issuePriorityRepo.findById(id);
         if (issuePriorityOptional.isPresent()) {
-            IssuePriority issuePriority = issuePriorityMapper.toEntity(issuePriorityDTO);
+            IssuePriority issuePriority = issuePriorityOptional.get();
+            BeanUtils.copyProperties(issuePriorityDTO, issuePriority, "id");
             issuePriorityRepo.save(issuePriority);
         }
         // TODO throw id not found exception for modification
