@@ -17,7 +17,29 @@ public class ApiConstant {
     /**  rest api for branch **/
     public static final String  branch = endPoint+"/branch";
 
-    /**  rest api for branch **/
+    /**  rest api for department **/
     public static final String  department = endPoint+"/department";
+
+    /**  rest api for issuehistory **/
+    public static final String  issuehistory = endPoint+"/issuehistory";
+
+    /**  rest api for issuepriority **/
+    public static final String  issuepriority = endPoint+"/issuepriority";
+
+    /**  rest api for issueruntime **/
+    public static final String  issueruntime = endPoint+"/issueruntime";
+
+    /**  rest api for issueseverity **/
+    public static final String  issueseverity = endPoint+"/issueseverity";
+
+    /**  rest api for project **/
+    public static final String  project = endPoint+"/project";
+
+    /**  rest api for role **/
+    public static final String  role = endPoint+"/role";
+
+    /**  rest api for role **/
+    public static final String  user = endPoint+"/user";
+
 
 }

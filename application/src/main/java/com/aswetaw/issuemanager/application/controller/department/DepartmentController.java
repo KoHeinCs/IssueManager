@@ -35,7 +35,7 @@ public class DepartmentController {
     @GetMapping(all)
     private ResponseEntity<Object> getAllDepartment() {
         List<DepartmentDTO> departmentDTOList = departmentService.findAll();
-        return ResponseHandler.createHttpResponse(departmentDTOList, "Requested departmentes were given ", HttpStatus.OK);
+        return ResponseHandler.createHttpResponse(departmentDTOList, "Requested departments were given ", HttpStatus.OK);
     }
 
     @GetMapping(findById)
