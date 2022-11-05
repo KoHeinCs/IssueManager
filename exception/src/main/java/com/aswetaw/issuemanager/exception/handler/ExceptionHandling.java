@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 @Slf4j
 public class ExceptionHandling {
+
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<Object> notFoundException(NotFoundException exception){
         log.error("notFoundException happen! ",exception.getMessage());
         return ResponseHandler.createHttpResponse(exception.getMessage(),HttpStatus.NOT_FOUND);
     }
+
 }

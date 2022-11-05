@@ -1,6 +1,8 @@
 package com.aswetaw.issuemanager.commongeneric;
 
 import com.aswetaw.issuemanager.common.response.ResponseHandler;
+import com.aswetaw.issuemanager.exception.IssueManagerException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,13 +16,11 @@ import static com.aswetaw.issuemanager.common.constant.ApiConstant.*;
  * @author Hein Htet Aung
  * @created at 05/11/2022
  **/
+@RequiredArgsConstructor
 public abstract class BaseController<T, ID extends Serializable> {
 
-    private BaseService baseService;
+    private final BaseService baseService;
 
-    public BaseController(BaseService baseService){
-        this.baseService = baseService;
-    }
 
     @PostMapping(create)
     private ResponseEntity<Object> create(@RequestBody T dto) {
@@ -28,7 +28,7 @@ public abstract class BaseController<T, ID extends Serializable> {
     }
 
     @PostMapping(update)
-    private ResponseEntity<Object> update(@PathVariable ID id, @RequestBody T dto) {
+    private ResponseEntity<Object> update(@PathVariable ID id, @RequestBody T dto) throws IssueManagerException {
         return ResponseHandler.createHttpResponse(baseService.update(id, dto), "Entity was updated successfully ", HttpStatus.ACCEPTED);
     }
 
@@ -39,7 +39,7 @@ public abstract class BaseController<T, ID extends Serializable> {
     }
 
     @GetMapping(findById)
-    public ResponseEntity<Object> getById(@PathVariable("id") ID id) {
+    public ResponseEntity<Object> getById(@PathVariable("id") ID id) throws IssueManagerException {
         return ResponseHandler.createHttpResponse(baseService.findById(id), "Requested entity was given successfully", HttpStatus.OK);
     }
 

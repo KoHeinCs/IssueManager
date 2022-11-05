@@ -5,6 +5,7 @@ package com.aswetaw.issuemanager.common.constant;
  * @created at 05/11/2022
  **/
 public class MessageConstant {
+
     public static final String USER_NOT_FOUND_MSG = "No user found by username ";
     public static final String EMAIL_NOT_FOUND_MSG = "No user found for email ";
     public static final String USER_ALREADY_EXIST_MSG = "Username already exists ";
