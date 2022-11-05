@@ -29,5 +29,6 @@
         <module>util</module>
         <module>common</module>
         <module>occupation</module>
+        <module>common-generic</module>
     </modules>
 </project>

@@ -1,10 +1,10 @@
-package com.aswetaw.issuemanager.common;
+package com.aswetaw.issuemanager.commongeneric;
 
 import java.util.List;
 
 /**
  * @author Hein Htet Aung
- * @created at 23/10/2022
+ * @created at 05/11/2022
  **/
 public abstract class BaseService<T, ID> {
     protected abstract T findById(ID id);

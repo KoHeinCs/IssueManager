@@ -1,6 +1,6 @@
 package com.aswetaw.issuemanager.user.service;
 
-import com.aswetaw.issuemanager.common.BaseService;
+import com.aswetaw.issuemanager.commongeneric.BaseService;
 import com.aswetaw.issuemanager.entities.User;
 import com.aswetaw.issuemanager.request.dto.UserDTO;
 import com.aswetaw.issuemanager.request.mapper.UserMapper;

@@ -1,6 +1,6 @@
 package com.aswetaw.issuemanager.occupation.service;
 
-import com.aswetaw.issuemanager.common.BaseService;
+import com.aswetaw.issuemanager.commongeneric.BaseService;
 import com.aswetaw.issuemanager.entities.Occupation;
 import com.aswetaw.issuemanager.occupation.repository.OccupationRepository;
 import com.aswetaw.issuemanager.request.dto.OccupationDTO;

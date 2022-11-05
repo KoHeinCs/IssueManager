@@ -1,6 +1,6 @@
 package com.aswetaw.issuemanager.role.service;
 
-import com.aswetaw.issuemanager.common.BaseService;
+import com.aswetaw.issuemanager.commongeneric.BaseService;
 import com.aswetaw.issuemanager.entities.Role;
 import com.aswetaw.issuemanager.request.dto.RoleDTO;
 import com.aswetaw.issuemanager.request.mapper.RoleMapper;

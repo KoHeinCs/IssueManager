@@ -1,6 +1,6 @@
 package com.aswetaw.issuemanager.issuehistory.service;
 
-import com.aswetaw.issuemanager.common.BaseService;
+import com.aswetaw.issuemanager.commongeneric.BaseService;
 import com.aswetaw.issuemanager.entities.IssueHistory;
 import com.aswetaw.issuemanager.issuehistory.repository.IssueHistoryRepository;
 import com.aswetaw.issuemanager.request.dto.IssueHistoryDTO;

@@ -1,4 +1,4 @@
-package com.aswetaw.issuemanager.common.util;
+package com.aswetaw.issuemanager.common.constant;
 
 /**
  * @author Hein Htet Aung

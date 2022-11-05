@@ -1,6 +1,6 @@
 package com.aswetaw.issuemanager.issueruntime.service;
 
-import com.aswetaw.issuemanager.common.BaseService;
+import com.aswetaw.issuemanager.commongeneric.BaseService;
 import com.aswetaw.issuemanager.entities.IssueRuntime;
 import com.aswetaw.issuemanager.issueruntime.repository.IssueRuntimeRepository;
 import com.aswetaw.issuemanager.request.dto.IssueRuntimeDTO;

@@ -1,12 +1,12 @@
 package com.aswetaw.issuemanager.application.controller.branch;
 
 import com.aswetaw.issuemanager.branch.service.BranchService;
-import com.aswetaw.issuemanager.common.BaseController;
+import com.aswetaw.issuemanager.commongeneric.BaseController;
 import com.aswetaw.issuemanager.request.dto.BranchDTO;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import static com.aswetaw.issuemanager.common.util.ApiConstant.branch;
+import static com.aswetaw.issuemanager.common.constant.ApiConstant.branch;
 
 /**
  * @author Hein Htet Aung

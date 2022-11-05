@@ -1,6 +1,6 @@
 package com.aswetaw.issuemanager.issueseverity.service;
 
-import com.aswetaw.issuemanager.common.BaseService;
+import com.aswetaw.issuemanager.commongeneric.BaseService;
 import com.aswetaw.issuemanager.entities.IssueSeverity;
 import com.aswetaw.issuemanager.issueseverity.repository.IssueSeverityRepository;
 import com.aswetaw.issuemanager.request.dto.IssueSeverityDTO;

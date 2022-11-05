@@ -1,6 +1,6 @@
 package com.aswetaw.issuemanager.issuepriority.service;
 
-import com.aswetaw.issuemanager.common.BaseService;
+import com.aswetaw.issuemanager.commongeneric.BaseService;
 import com.aswetaw.issuemanager.entities.IssuePriority;
 import com.aswetaw.issuemanager.issuepriority.repository.IssuePriorityRepository;
 import com.aswetaw.issuemanager.request.dto.IssuePriorityDTO;

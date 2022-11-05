@@ -1,4 +1,4 @@
-package com.aswetaw.issuemanager.common;
+package com.aswetaw.issuemanager.commongeneric;
 
 import com.aswetaw.issuemanager.common.response.ResponseHandler;
 import org.springframework.http.HttpStatus;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.Serializable;
 import java.util.List;
 
-import static com.aswetaw.issuemanager.common.util.ApiConstant.*;
+import static com.aswetaw.issuemanager.common.constant.ApiConstant.*;
 
 /**
  * @author Hein Htet Aung
@@ -28,7 +28,7 @@ public abstract class BaseController<T, ID extends Serializable> {
     }
 
     @PostMapping(update)
-    private ResponseEntity<Object> update(@PathVariable ID id,@RequestBody T dto) {
+    private ResponseEntity<Object> update(@PathVariable ID id, @RequestBody T dto) {
         return ResponseHandler.createHttpResponse(baseService.update(id, dto), "Entity was updated successfully ", HttpStatus.ACCEPTED);
     }
 

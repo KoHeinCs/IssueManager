@@ -1,6 +1,6 @@
 package com.aswetaw.issuemanager.department.service;
 
-import com.aswetaw.issuemanager.common.BaseService;
+import com.aswetaw.issuemanager.commongeneric.BaseService;
 import com.aswetaw.issuemanager.department.repository.DepartmentRepository;
 import com.aswetaw.issuemanager.entities.Department;
 import com.aswetaw.issuemanager.request.dto.DepartmentDTO;
