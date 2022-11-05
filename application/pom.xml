@@ -51,11 +51,6 @@
         </dependency>
         <dependency>
             <groupId>com.aswetaw.issuemanager</groupId>
-            <artifactId>user</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.aswetaw.issuemanager</groupId>
             <artifactId>branch</artifactId>
             <version>${project.version}</version>
         </dependency>
