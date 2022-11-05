@@ -28,5 +28,6 @@
         <module>exception</module>
         <module>util</module>
         <module>common</module>
+        <module>occupation</module>
     </modules>
 </project>

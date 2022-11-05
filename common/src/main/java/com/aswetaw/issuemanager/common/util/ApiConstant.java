@@ -38,8 +38,11 @@ public class ApiConstant {
     /**  rest api for role **/
     public static final String  role = endPoint+"/role";
 
-    /**  rest api for role **/
+    /**  rest api for user **/
     public static final String  user = endPoint+"/user";
+
+    /**  rest api for occupation **/
+    public static final String  occupation = endPoint+"/occupation";
 
 
 }
