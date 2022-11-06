@@ -10,5 +10,5 @@ public class MessageConstant {
     public static final String EMAIL_NOT_FOUND_MSG = "No user found for email ";
     public static final String USER_ALREADY_EXIST_MSG = "Username already exists ";
     public static final String EMAIL_ALREADY_EXIST_MSG = "Email already exists ";
-    public static final String BRANCH_NOT_FOUND_MSG = "No branch found by id ";
+    public static final String ENTITY_NOT_FOUND_MSG = "No entity found by id ";
 }

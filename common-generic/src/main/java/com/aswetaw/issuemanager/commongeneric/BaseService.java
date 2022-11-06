@@ -25,23 +25,26 @@ public abstract class BaseService<D, E, ID extends Serializable> {
 
 
     public D findById(ID id) throws IssueManagerException {
-        Optional<E> branchOptional = jpaRepo.findById(id);
-        if (branchOptional.isPresent())
-            return baseMapper.toDTO(branchOptional.get());
+        Optional<E> entityOptional = jpaRepo.findById(id);
+        if (entityOptional.isPresent())
+            return baseMapper.toDTO(entityOptional.get());
         else
-            throw new NotFoundException(MessageConstant.BRANCH_NOT_FOUND_MSG);
+            throw new NotFoundException(MessageConstant.ENTITY_NOT_FOUND_MSG);
     }
 
     public List<D> findAll() {
-        List<E> branchList = (List<E>) jpaRepo.findAll();
-        if (branchList.isEmpty())
+        List<E> entityList = (List<E>) jpaRepo.findAll();
+        if (entityList.isEmpty())
             return Collections.emptyList();
         else
-            return baseMapper.toDTOList(branchList);
+            return baseMapper.toDTOList(entityList);
     }
 
-    public void deleteById(ID id) {
-        jpaRepo.deleteById(id);
+    public void deleteById(ID id) throws IssueManagerException{
+        if (jpaRepo.existsById(id))
+            jpaRepo.deleteById(id);
+        else throw new NotFoundException(MessageConstant.ENTITY_NOT_FOUND_MSG);
+
     }
 
     public void delete(D dto) {
@@ -54,13 +57,13 @@ public abstract class BaseService<D, E, ID extends Serializable> {
     }
 
     public D update(ID id, D dto) throws IssueManagerException {
-        Optional<E> branchOptional = jpaRepo.findById(id);
-        if (branchOptional.isPresent()) {
-            E entity = branchOptional.get();
+        Optional<E> entityOptional = jpaRepo.findById(id);
+        if (entityOptional.isPresent()) {
+            E entity = entityOptional.get();
             BeanUtils.copyProperties(dto, entity, "id");
             return baseMapper.toDTO(jpaRepo.save(entity));
         } else
-            throw new NotFoundException(MessageConstant.BRANCH_NOT_FOUND_MSG);
+            throw new NotFoundException(MessageConstant.ENTITY_NOT_FOUND_MSG);
     }
 
 }

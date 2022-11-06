@@ -44,7 +44,7 @@ public abstract class BaseController<T, ID extends Serializable> {
     }
 
     @DeleteMapping(deleteById)
-    public ResponseEntity<Object> delete(@PathVariable("id") ID id) {
+    public ResponseEntity<Object> delete(@PathVariable("id") ID id) throws IssueManagerException{
         baseService.deleteById(id);
         return ResponseHandler.createHttpResponse("Requested entity with id =" + id + " was deleted successfully", HttpStatus.OK);
     }
