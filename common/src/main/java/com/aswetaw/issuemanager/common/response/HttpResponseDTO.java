@@ -42,6 +42,7 @@ public class HttpResponseDTO<T> {
         this.message = message;
         this.httpStatusCode = httpStatus.value();
         this.httpStatus = httpStatus;
+        this.localDateTime = LocalDateTime.now();
 
     }
 

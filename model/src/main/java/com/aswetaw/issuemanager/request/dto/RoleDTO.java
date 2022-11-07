@@ -1,11 +1,6 @@
 package com.aswetaw.issuemanager.request.dto;
 
-import com.aswetaw.issuemanager.enums.RoleType;
 import lombok.Data;
-
-import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 
 /**
  * @author Hein Htet Aung
@@ -14,6 +9,6 @@ import javax.persistence.Enumerated;
 @Data
 public class RoleDTO {
     private Long id;
+    private String name;
     private String description;
-    private RoleType roleType;
 }

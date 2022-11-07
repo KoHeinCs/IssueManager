@@ -23,4 +23,10 @@ public class ExceptionHandling {
         return ResponseHandler.createHttpResponse(exception.getMessage(),HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Object> notFoundException(Exception exception){
+        log.error("internal server error happen! ",exception.getMessage());
+        return ResponseHandler.createHttpResponse(exception.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
 }
