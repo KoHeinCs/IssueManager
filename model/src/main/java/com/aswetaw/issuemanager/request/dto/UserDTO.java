@@ -17,6 +17,8 @@ public class UserDTO {
     private String phone;
     private String email;
     private LocalDateTime joinDate;
+    private boolean isActive;
+    private boolean isNotLocked;
 
     private DepartmentDTO departmentDTO;
     private RoleDTO roleDTO;

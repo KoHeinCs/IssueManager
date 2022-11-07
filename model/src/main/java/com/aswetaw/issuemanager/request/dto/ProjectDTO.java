@@ -14,6 +14,7 @@ public class ProjectDTO {
     private Long id;
     private String name;
     private String description;
+    private LocalDateTime startDate;
     private LocalDateTime targetEndDate;
     private LocalDateTime actualEndDate;
 
