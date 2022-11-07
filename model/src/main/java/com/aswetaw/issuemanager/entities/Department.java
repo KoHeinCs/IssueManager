@@ -16,7 +16,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @EntityListeners(AuditListener.class)
-public class Department implements IAudit{
+public class Department implements IAudit {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
@@ -28,11 +28,26 @@ public class Department implements IAudit{
     private String phone;
     private String address;
 
-    /** for audit log **/
+    public Department() {
+    }
+
+    public Department(String name, String description, String email, String phone, String address) {
+        this.name = name;
+        this.description = description;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+    }
+
+    /**
+     * for audit log
+     **/
     @Embedded
     Audit audit;
 
-    /** for transaction concurrency control **/
+    /**
+     * for transaction concurrency control
+     **/
     @Version
     private int version;
 }

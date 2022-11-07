@@ -25,6 +25,12 @@ public class IssueSeverity implements IAudit {
     private String name;
     private String description;
 
+    public IssueSeverity(){}
+    public IssueSeverity(String name,String description){
+        this.name = name;
+        this.description = description;
+    }
+
     /** for relationships **/
     @OneToOne(mappedBy = "issueSeverity")
     private Issue issue;

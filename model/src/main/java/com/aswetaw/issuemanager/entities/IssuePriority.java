@@ -25,15 +25,29 @@ public class IssuePriority implements IAudit {
     private String name;
     private String description;
 
-    /** for relationships **/
+    public IssuePriority() {
+    }
+
+    public IssuePriority(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    /**
+     * for relationships
+     **/
     @OneToOne(mappedBy = "issuePriority")
     private Issue issue;
 
-    /** for audit log **/
+    /**
+     * for audit log
+     **/
     @Embedded
     Audit audit;
 
-    /** for transaction concurrency control **/
+    /**
+     * for transaction concurrency control
+     **/
     @Version
     private int version;
 }

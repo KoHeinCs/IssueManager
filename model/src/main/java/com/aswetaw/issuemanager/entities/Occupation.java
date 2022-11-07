@@ -24,14 +24,26 @@ public class Occupation implements IAudit {
     private String name;
     private String description;
 
+    public Occupation() {
+    }
+
+    public Occupation(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
     /** for relationships **/
 
 
-    /** for audit log **/
+    /**
+     * for audit log
+     **/
     @Embedded
     Audit audit;
 
-    /** for transaction concurrency control **/
+    /**
+     * for transaction concurrency control
+     **/
     @Version
     private int version;
 }

@@ -27,6 +27,12 @@ public class Branch implements IAudit {
     private String name;
     private String description;
 
+    public Branch(){}
+    public Branch(String name,String description){
+        this.name = name;
+        this.description = description;
+    }
+
     /** for relationships **/
 
 

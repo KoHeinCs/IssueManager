@@ -20,8 +20,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public abstract class BaseService<D, E, ID extends Serializable> {
 
-    private final JpaRepository<E, ID> jpaRepo;
-    private final BaseMapper<D, E> baseMapper;
+    protected final JpaRepository<E, ID> jpaRepo;
+    protected final BaseMapper<D, E> baseMapper;
 
 
     public D findById(ID id) throws IssueManagerException {
