@@ -27,6 +27,8 @@ public class Project implements IAudit {
     @Column(nullable = false, unique = true)
     private String name;
     private String description;
+    @Column(nullable = false, name = "start_date")
+    private LocalDateTime startDate;
     @Column(nullable = false, name = "target_end_date")
     private LocalDateTime targetEndDate;
     @Column(name = "actual_end_date")
