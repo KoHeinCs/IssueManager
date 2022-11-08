@@ -35,14 +35,14 @@ public class User implements IAudit {
     private String email;
     @Column(name = "join_date")
     private LocalDateTime joinDate;
-    private boolean isActive;
-    private boolean isNotLocked;
+    private Boolean isActive;
+    private Boolean isNotLocked;
 
     /**
      * for relationships
      **/
 
-    @OneToOne(cascade = {CascadeType.PERSIST})
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "occupation_id", nullable = false)
     private Occupation occupation;
 

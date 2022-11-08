@@ -21,7 +21,7 @@ public class Role implements IAudit {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     private Long id;
-    @Column(unique = true)
+    @Column(unique = true,nullable = false)
     private String name;
     private String description;
 

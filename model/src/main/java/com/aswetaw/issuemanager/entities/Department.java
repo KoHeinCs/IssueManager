@@ -21,7 +21,7 @@ public class Department implements IAudit {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     private Long id;
-    @Column(nullable = false)
+    @Column(unique = true,nullable = false)
     private String name;
     private String description;
     private String email;

@@ -11,14 +11,14 @@ import java.time.LocalDateTime;
 @Data
 public class UserDTO {
     private Long id;
-    private String userName;
+    private String username;
     private String password;
     private String employeeNo;
     private String phone;
     private String email;
     private LocalDateTime joinDate;
-    private boolean isActive;
-    private boolean isNotLocked;
+    private Boolean isActive;
+    private Boolean isNotLocked;
 
     private DepartmentDTO departmentDTO;
     private RoleDTO roleDTO;

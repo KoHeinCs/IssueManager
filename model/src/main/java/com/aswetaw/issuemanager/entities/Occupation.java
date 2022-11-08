@@ -21,6 +21,7 @@ public class Occupation implements IAudit {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     private Long id;
+    @Column(unique = true,nullable = false)
     private String name;
     private String description;
 
