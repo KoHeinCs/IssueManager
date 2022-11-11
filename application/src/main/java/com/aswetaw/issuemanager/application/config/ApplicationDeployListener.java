@@ -2,10 +2,12 @@ package com.aswetaw.issuemanager.application.config;
 
 import com.aswetaw.issuemanager.branch.service.BranchService;
 import com.aswetaw.issuemanager.department.service.DepartmentService;
+import com.aswetaw.issuemanager.exception.IssueManagerException;
 import com.aswetaw.issuemanager.issuepriority.service.IssuePriorityService;
 import com.aswetaw.issuemanager.issueseverity.service.IssueSeverityService;
 import com.aswetaw.issuemanager.occupation.service.OccupationService;
 import com.aswetaw.issuemanager.role.service.RoleService;
+import com.aswetaw.issuemanager.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
@@ -24,6 +26,7 @@ public class ApplicationDeployListener implements ApplicationListener<Applicatio
     private final IssueSeverityService issueSeverityService;
     private final IssuePriorityService issuePriorityService;
     private final RoleService roleService;
+    private final UserService userService;
 
     @Override
     public void onApplicationEvent(ApplicationReadyEvent event) {
@@ -33,5 +36,6 @@ public class ApplicationDeployListener implements ApplicationListener<Applicatio
         issueSeverityService.init();
         issuePriorityService.init();
         roleService.init();
+        userService.init();
     }
 }

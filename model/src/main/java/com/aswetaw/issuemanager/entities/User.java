@@ -38,6 +38,20 @@ public class User implements IAudit {
     private Boolean isActive;
     private Boolean isNotLocked;
 
+    public User(){}
+
+    public User(String username, String password, String employeeNo,
+                String phone,String email,LocalDateTime joinDate,Boolean isActive,Boolean isNotLocked){
+        this.username = username;
+        this.password = password;
+        this.employeeNo = employeeNo;
+        this.phone = phone;
+        this.email = email;
+        this.joinDate = joinDate;
+        this.isActive = isActive;
+        this.isNotLocked = isNotLocked;
+    }
+
     /**
      * for relationships
      **/

@@ -38,6 +38,21 @@
             <artifactId>common-generic</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.aswetaw.issuemanager</groupId>
+            <artifactId>department</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.aswetaw.issuemanager</groupId>
+            <artifactId>role</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.aswetaw.issuemanager</groupId>
+            <artifactId>occupation</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
 </project>
