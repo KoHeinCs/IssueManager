@@ -12,6 +12,7 @@ import com.aswetaw.issuemanager.request.dto.UserDTO;
 import com.aswetaw.issuemanager.request.mapper.UserMapper;
 import com.aswetaw.issuemanager.role.service.RoleService;
 import com.aswetaw.issuemanager.user.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
@@ -28,6 +29,7 @@ public class UserService extends BaseService<UserDTO, User, Long> {
     private final RoleService roleService;
     private final OccupationService occupationService;
 
+    @Autowired
     public UserService(UserRepository userRepo, UserMapper userMapper,
                        DepartmentService departmentService, RoleService roleService,
                        OccupationService occupationService) {
@@ -39,50 +41,53 @@ public class UserService extends BaseService<UserDTO, User, Long> {
 
     public void init()   {
         try {
-            Department lifeDepartment = this.departmentService.findByName("Life Department");
 
-            Occupation developerOccupation = this.occupationService.findByName(OccupationService.developer);
-            Occupation seniorOccupation = this.occupationService.findByName(OccupationService.senior);
-            Occupation leaderOccupation = this.occupationService.findByName(OccupationService.leader);
-            Occupation managerOccupation = this.occupationService.findByName(OccupationService.manager);
-            Occupation testerOccupation = this.occupationService.findByName(OccupationService.tester);
+            if (this.jpaRepo.count() == 0){
+                Department lifeDepartment = this.departmentService.findByName("Life Department");
 
-            Role developerRole = this.roleService.findByName("developer");
-            Role leaderRole = this.roleService.findByName("leader");
-            Role testerRole = this.roleService.findByName("tester");
-            Role managerRole = this.roleService.findByName("manager");
+                Occupation developerOccupation = this.occupationService.findByName(OccupationService.developer);
+                Occupation seniorOccupation = this.occupationService.findByName(OccupationService.senior);
+                Occupation leaderOccupation = this.occupationService.findByName(OccupationService.leader);
+                Occupation managerOccupation = this.occupationService.findByName(OccupationService.manager);
+                Occupation testerOccupation = this.occupationService.findByName(OccupationService.tester);
 
-            User makywe = new User("Ma Kywe", "admin", "emp1", "0987654", "makywe@gmail.com", LocalDateTime.now(), true, true);
-            makywe.setDepartment(lifeDepartment);
-            makywe.setOccupation(managerOccupation);
-            makywe.setRole(managerRole);
+                Role developerRole = this.roleService.findByName("developer");
+                Role leaderRole = this.roleService.findByName("leader");
+                Role testerRole = this.roleService.findByName("tester");
+                Role managerRole = this.roleService.findByName("manager");
 
-            User pyaesone = new User("Ko Pyae Sone", "admin", "emp2", "0987654", "kopyaesone@gmail.com", LocalDateTime.now(), true, true);
-            pyaesone.setDepartment(lifeDepartment);
-            pyaesone.setOccupation(leaderOccupation);
-            pyaesone.setRole(leaderRole);
+                User makywe = new User("Ma Kywe", "admin", "emp1", "0987654", "makywe@gmail.com", LocalDateTime.now(), true, true);
+                makywe.setDepartment(lifeDepartment);
+                makywe.setOccupation(managerOccupation);
+                makywe.setRole(managerRole);
 
-            User kohein = new User("Ko HeinCs", "admin", "emp3", "0987654", "koheincs@gmail.com", LocalDateTime.now(), true, true);
-            kohein.setDepartment(lifeDepartment);
-            kohein.setOccupation(seniorOccupation);
-            kohein.setRole(developerRole);
+                User pyaesone = new User("Ko Pyae Sone", "admin", "emp2", "0987654", "kopyaesone@gmail.com", LocalDateTime.now(), true, true);
+                pyaesone.setDepartment(lifeDepartment);
+                pyaesone.setOccupation(leaderOccupation);
+                pyaesone.setRole(leaderRole);
 
-            User chawyupar = new User("Ma Chaw Yu Par", "admin", "emp4", "0987654", "chawyupar@gmail.com", LocalDateTime.now(), true, true);
-            chawyupar.setDepartment(lifeDepartment);
-            chawyupar.setOccupation(developerOccupation);
-            chawyupar.setRole(developerRole);
+                User kohein = new User("Ko HeinCs", "admin", "emp3", "0987654", "koheincs@gmail.com", LocalDateTime.now(), true, true);
+                kohein.setDepartment(lifeDepartment);
+                kohein.setOccupation(seniorOccupation);
+                kohein.setRole(developerRole);
 
-            User yeminkhant = new User("Mg Ye Min Khant", "admin", "emp5", "0987654", "yeminkhant@gmail.com", LocalDateTime.now(), true, true);
-            yeminkhant.setDepartment(lifeDepartment);
-            yeminkhant.setOccupation(developerOccupation);
-            yeminkhant.setRole(developerRole);
+                User chawyupar = new User("Ma Chaw Yu Par", "admin", "emp4", "0987654", "chawyupar@gmail.com", LocalDateTime.now(), true, true);
+                chawyupar.setDepartment(lifeDepartment);
+                chawyupar.setOccupation(developerOccupation);
+                chawyupar.setRole(developerRole);
 
-            User nayChiNwe = new User("Ma Nay Chi Nwe", "admin", "emp6", "0987654", "naychinwe@gmail.com", LocalDateTime.now(), true, true);
-            nayChiNwe.setDepartment(lifeDepartment);
-            nayChiNwe.setOccupation(testerOccupation);
-            nayChiNwe.setRole(testerRole);
+                User yeminkhant = new User("Mg Ye Min Khant", "admin", "emp5", "0987654", "yeminkhant@gmail.com", LocalDateTime.now(), true, true);
+                yeminkhant.setDepartment(lifeDepartment);
+                yeminkhant.setOccupation(developerOccupation);
+                yeminkhant.setRole(developerRole);
 
-            this.jpaRepo.saveAll(Arrays.asList(makywe, pyaesone, kohein, chawyupar, yeminkhant, nayChiNwe));
+                User nayChiNwe = new User("Ma Nay Chi Nwe", "admin", "emp6", "0987654", "naychinwe@gmail.com", LocalDateTime.now(), true, true);
+                nayChiNwe.setDepartment(lifeDepartment);
+                nayChiNwe.setOccupation(testerOccupation);
+                nayChiNwe.setRole(testerRole);
+
+                this.jpaRepo.saveAll(Arrays.asList(makywe, pyaesone, kohein, chawyupar, yeminkhant, nayChiNwe));
+            }
         }catch (IssueManagerException exception){
 
         }
