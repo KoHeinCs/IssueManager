@@ -51,19 +51,19 @@ public class Issue implements IAudit {
     @JoinColumn(name = "project_id", nullable = false)
     private Project project;
 
-    @OneToOne(cascade = {CascadeType.PERSIST})
+    @OneToOne(cascade = {CascadeType.PERSIST},fetch = FetchType.LAZY)
     @JoinColumn(name = "issue_priority_id", nullable = false)
     private IssuePriority issuePriority;
 
-    @OneToOne(cascade = {CascadeType.PERSIST})
+    @OneToOne(cascade = {CascadeType.PERSIST},fetch = FetchType.LAZY)
     @JoinColumn(name = "issue_severity_id", nullable = false)
     private IssueSeverity issueSeverity;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "assigned_by_user", nullable = false)
     private User assignedByUser;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "assigned_to_user", nullable = false)
     private User assignedToUser;
 

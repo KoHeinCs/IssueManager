@@ -32,7 +32,7 @@ public class IssueSeverity implements IAudit {
     }
 
     /** for relationships **/
-    @OneToOne(mappedBy = "issueSeverity")
+    @OneToOne(mappedBy = "issueSeverity",fetch = FetchType.LAZY)
     private Issue issue;
 
     /** for audit log **/

@@ -36,7 +36,7 @@ public class IssuePriority implements IAudit {
     /**
      * for relationships
      **/
-    @OneToOne(mappedBy = "issuePriority")
+    @OneToOne(mappedBy = "issuePriority",fetch = FetchType.LAZY)
     private Issue issue;
 
     /**
