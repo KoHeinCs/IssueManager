@@ -29,6 +29,7 @@ The application includes a comprehensive set of features tailored to the needs o
 
 The application is built using modern web development technologies:
 
+- **Programming**: Spring boot , Multi Maven , Java 11
 - **Generic CRUD API**: Developed based controller,based service,based mapper for generic crud api . Include common request and response structure .
 - **Multi Maven** : Developed this project using <b>multi maven module structure</b>
 - **Exception** : Developed this project using global exception handling .
