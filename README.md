@@ -2,22 +2,34 @@
 
 ## Overview
 
-Provide a brief overview of your project. What is its purpose, and what problem does it solve? 
+The Issue Tracking Application for Software Development is a web-based tool.<br>
+<b>Recruiters can view this repo too to know tech stacks which I used for this project .</b><br>
+I am still developing on this project .
 
 ## Features
 
-List the key features and functionalities of your project. Use bullet points for clarity.
+The application includes a comprehensive set of features tailored to the needs of software development teams:
 
-- Feature 1
-- Feature 2
-- Feature 3
+- **Issue Creation**: Users can create new issues, specifying details such as title, description, priority, status, and assignee.
+
+- **Task Assignment**: Issues can be assigned to specific team members, ensuring clear ownership and responsibility.
+
+- **Status Tracking**: Real-time status updates provide visibility into the progress of each issue, from "Open" to "Closed."
+
+- **Attachments**: Users can attach files, screenshots, or documents to provide additional context for issues.
+
+- **Notifications**: Automatic notifications keep team members informed about updates and changes to assigned issues.
+
+- **Search and Filters**: Powerful search and filtering capabilities make it easy to locate specific issues or view them by criteria.
+
+- **Integration**: Integration with version control systems (e.g., Git), project management tools (e.g., JIRA) .
+
 
 ## Technologies Used
 
-List the programming languages, frameworks, libraries, and tools you used in your project.
+The application is built using modern web development technologies:
 
-- Programming Language: [Language]
-- Framework: [Framework]
-- Database: [Database]
-- Other Tools: [Tool 1], [Tool 2]
+- **Generic CRUD API**: Developed based controller,based service,based mapper for generic crud api . Include common request and response structure .
+- **Multi Maven** : Developed this project using <b>multi maven module structure</b>
+- **Exception** : Developed this project using global exception handling .
 
