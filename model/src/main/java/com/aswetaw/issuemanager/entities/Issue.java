@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditListener.class)
 public class Issue implements IAudit {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
     private Long id;
     @Column(nullable = false, unique = true, name = "issue_no")

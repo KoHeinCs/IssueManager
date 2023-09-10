@@ -21,7 +21,7 @@ import java.util.Set;
 @EntityListeners(AuditListener.class)
 public class User implements IAudit {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
     private Long id;
     @Column(nullable = false, name = "username")
