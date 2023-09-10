@@ -4,7 +4,7 @@
 
 The Issue Tracking Application for Software Development is a web-based tool.<br>
 <b>Recruiters can view this repo too to know tech stacks which I used for this project .</b><br>
-I am still developing on this project .
+*** Note *** I am still developing on this project .
 
 ## Features
 
